@@ -1,7 +1,21 @@
-<ul class="list-group">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-    <li class="list-group-item">A fourth item</li>
-    <li class="list-group-item">And a fifth one</li>
-  </ul>
+<ul class="list-group">    
+    <li [class]="getAllCategoryClass()" routerLink = "/products">Tüm Ürünler</li>
+  <li
+    (click)="setCurrentCategory(category)"
+    routerLink = "/products/category/{{category.categoryId}}"
+    *ngFor="let category of categories"
+    [class]="getCurrentCategoryClass(category)"
+  >
+    {{ category.categoryName }}
+  </li>
+</ul>
+
+<!-- normal olarak class şeklinde yazılırsa html css'e ulaşıyor ona göre şekilleniyor.. 
+    [class] olarak yazarsak component'teki bir metoda göre değiştirmek istersek, köşeli parantez yaparız-->
+<!-- [] => bileşenden şablona () => şablondan bileşene [(ngModel)]her iki yöne-->
+
+<!--<h5 *ngIf="currentCategory">{{ currentCategory.categoryName }} seçildi</h5>
+
+<!-- *ngIf="currentCategory" yazınca defined(tanımlanmış) ise,anlamlı birşey ise demek. yani yazmayınca
+currentCategory = ... bi karşılığı yok o yüzden bunu defined(tanımlı) hale
+getiriyoruz -->
