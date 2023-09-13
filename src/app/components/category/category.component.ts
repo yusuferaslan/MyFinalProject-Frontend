@@ -9,7 +9,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryComponent implements OnInit {
   categories: Category[] = [];
-  currentCategory!: Category; // ! yerine tsconfig.json dosyası içine  "strictPropertyInitialization":false yazılabilir.
+  currentCategory: Category | null = null;
   dataLoaded = false;
 
   constructor(private categoryService: CategoryService) {}
@@ -45,5 +45,8 @@ export class CategoryComponent implements OnInit {
     }
   }
   
+  clearCurrentCategory() {
+    this.currentCategory = null;
+  }
 
 }
